@@ -50,35 +50,12 @@ function walkTo(snake,direction) {
 //   }
 // }
 const reducer = (state,action)=>{
-  const x= state.snakeHeadX;
-  const y= state.snakeHeadY;
-  const balls = state.balls;
-  let score = state.score;
-  let snake = state.snake;
-  for(let ball of balls) {
-    if ((Math.abs(x - ball.x)) <= 10 && (Math.abs(y - ball.y) <= 10)) {
-      ball.exist = false;
-      score = score + 10;
-      snake.push({
-        x:snake[snake.length-1].x+20,
-        y:snake[snake.length-1].y
-      })
-    }
-  }
+
   if(action.type==='GAME_START'){
-    // let snake = state.snake;
-    // while(snake[0].x+10<wallWidth){
-    //    setTimeout(()=>{
-    //      for(let i=snake.length-1;i>=1;i--) {
-    //        snake[i] = snake[i - 1]
-    //      }
-    //      },1000);
-    //   snake[0]={
-    //     x:x+20,
-    //     y:y
-    //   }
-    // }
-    return (state.set('score',score))
+    console.log(action.text)
+    return (state.set('gameState'," Gaming...").set('mode',action.text).set('modeChoose',false))
+  } else if(action.type==='MODE_CHOOSE'){
+    return state.set('modeChoose',true)
   } else if(action.type==='GO_RIGHT'){
        const snake = walkTo(state.snake,'right');
        return (
