@@ -38,4 +38,18 @@ export const modeChoose = state=>{
     state
   })
 }
-
+export const move = state=>{
+  return (
+    {
+      type:"MOVE",
+      state
+    }
+  )
+}
+export const changeDir=(state,direction)=>{
+  return ({
+    type:"CHANGE_DIRECTION",
+    direction:direction,
+    state
+  })
+}
